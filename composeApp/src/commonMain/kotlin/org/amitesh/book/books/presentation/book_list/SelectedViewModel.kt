@@ -7,7 +7,7 @@ import org.amitesh.book.books.domain.Book
 
 class SelectedViewModel: ViewModel() {
     private val _selectedBook = MutableStateFlow<Book?>(null)
-    val selected = _selectedBook.asStateFlow()
+    val selectedBook = _selectedBook.asStateFlow()
 
     fun onSelectedBook(book: Book?){
         _selectedBook.value = book

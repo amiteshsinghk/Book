@@ -4,6 +4,7 @@ import org.amitesh.book.books.data.network.KtorRemoteBookDataSource
 import org.amitesh.book.books.data.network.RemoteBookDataSource
 import org.amitesh.book.books.data.repository.DefaultBookRepository
 import org.amitesh.book.books.domain.repository.BookRepository
+import org.amitesh.book.books.presentation.book_detail.BookDetailViewModel
 import org.amitesh.book.books.presentation.book_list.BookListViewModel
 import org.amitesh.book.books.presentation.book_list.SelectedViewModel
 import org.amitesh.book.core.data.HttpClientFactory
@@ -24,4 +25,5 @@ val sharedModule = module {
 
     viewModelOf(::BookListViewModel)
     viewModelOf(::SelectedViewModel)
+    viewModelOf(::BookDetailViewModel)
 }
