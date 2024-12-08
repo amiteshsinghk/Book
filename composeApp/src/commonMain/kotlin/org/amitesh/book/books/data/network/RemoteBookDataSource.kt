@@ -1,5 +1,6 @@
 package org.amitesh.book.books.data.network
 
+import org.amitesh.book.books.data.dto.BookWorkDto
 import org.amitesh.book.books.data.dto.SearchResponseDto
 import org.amitesh.book.core.domain.DataError
 import org.amitesh.book.core.domain.Result
@@ -11,4 +12,6 @@ interface RemoteBookDataSource {
         query: String,
         resultLimit:Int? = null
     ): Result<SearchResponseDto, DataError.Remote>
+
+    suspend fun getBookDetails(bookId:String):Result<BookWorkDto, DataError.Remote>
 }

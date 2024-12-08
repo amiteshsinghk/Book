@@ -119,7 +119,7 @@ fun BlurredImageBackground(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Spacer(modifier = Modifier.fillMaxHeight(0.15f))
+            Spacer(modifier = Modifier.fillMaxHeight(0.125f))
             ElevatedCard(
                 modifier = Modifier
                     .height(250.dp)
