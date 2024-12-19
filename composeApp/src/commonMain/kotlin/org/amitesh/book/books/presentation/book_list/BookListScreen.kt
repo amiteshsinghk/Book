@@ -199,12 +199,12 @@ fun BookListScreen(
                                         }
 
                                         state.searchResults.isEmpty() -> {
-                                        Text(
-                                            text = stringResource(Res.string.no_results),
-                                            textAlign = TextAlign.Center,
-                                            style = MaterialTheme.typography.headlineSmall,
-                                            color = MaterialTheme.colorScheme.error
-                                        )
+                                            Text(
+                                                text = stringResource(Res.string.no_results),
+                                                textAlign = TextAlign.Center,
+                                                style = MaterialTheme.typography.headlineSmall,
+                                                color = MaterialTheme.colorScheme.error
+                                            )
                                         }
 
                                         else -> {
@@ -226,7 +226,6 @@ fun BookListScreen(
                                     CircularProgressIndicator()
                                 } else {
                                     when {
-//
                                         state.favouriteBooks.isEmpty() -> {
                                             Text(
                                                 text = stringResource(Res.string.no_favourite_books),
