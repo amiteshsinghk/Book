@@ -222,20 +222,11 @@ fun BookListScreen(
                             }
 
                             1 -> {
-                                println("BookList :: BookListScreen :: when ::  ${1}")
                                 if (state.isLoading) {
                                     CircularProgressIndicator()
                                 } else {
                                     when {
-                                        state.errorMessage != null -> {
-                                            Text(
-                                                text = state.errorMessage.asString(),
-                                                textAlign = TextAlign.Center,
-                                                style = MaterialTheme.typography.headlineSmall,
-                                                color = MaterialTheme.colorScheme.error
-                                            )
-                                        }
-
+//
                                         state.favouriteBooks.isEmpty() -> {
                                             Text(
                                                 text = stringResource(Res.string.no_favourite_books),
