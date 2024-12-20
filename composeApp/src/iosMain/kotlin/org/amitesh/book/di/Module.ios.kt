@@ -4,6 +4,7 @@ import io.ktor.client.engine.HttpClientEngine
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import io.ktor.client.engine.darwin.Darwin
+import org.amitesh.book.books.data.database.DatabaseFactory
 
 
 actual val platformModule: Module
@@ -11,4 +12,5 @@ actual val platformModule: Module
         single<HttpClientEngine>{
             Darwin.create()
         }
+        single { DatabaseFactory() }
     }
