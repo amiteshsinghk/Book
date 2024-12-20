@@ -1,4 +1,5 @@
 @file:OptIn(ExperimentalForeignApi::class)
+
 package org.amitesh.book.books.data.database
 
 import androidx.room.RoomDatabase
@@ -26,7 +27,5 @@ actual class DatabaseFactory {
             error = null
         )
         return requireNotNull(documentDirectory?.path)
-
     }
-
 }

@@ -18,5 +18,4 @@ abstract class FavouriteBookDb: RoomDatabase() {
     companion object{
         const val DATABASE_NAME = "favourite_book.db"
     }
-
 }

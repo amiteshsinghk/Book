@@ -33,7 +33,6 @@ val sharedModule = module {
     }
     single { get<FavouriteBookDb>().dao }
 
-
     viewModelOf(::BookListViewModel)
     viewModelOf(::SelectedViewModel)
     viewModelOf(::BookDetailViewModel)

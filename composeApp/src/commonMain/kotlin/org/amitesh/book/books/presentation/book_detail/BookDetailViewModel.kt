@@ -44,22 +44,21 @@ class BookDetailViewModel(
 
             is BookDetailAction.OnFavoriteClick -> {
                 viewModelScope.launch {
-                   if (state.value.isFavorite){
-                       bookRepository.deleteFromFavourites(bookId)
-                   } else {
-                       println("FavouriteBook:: BookDetailViewModel :: ${state.value.book}")
-                       state.value.book?.let { bookRepository.markAsFavourite(it) }
-                   }
+                    if (state.value.isFavorite) {
+                        bookRepository.deleteFromFavourites(bookId)
+                    } else {
+                        println("FavouriteBook:: BookDetailViewModel :: ${state.value.book}")
+                        state.value.book?.let { bookRepository.markAsFavourite(it) }
+                    }
                 }
             }
-
             else -> Unit
         }
     }
 
-    private fun observeFavouriteStatus(){
+    private fun observeFavouriteStatus() {
         bookRepository.isBookFavourite(bookId)
-            .onEach {favourite ->
+            .onEach { favourite ->
                 _state.update {
                     it.copy(isFavorite = favourite)
                 }
