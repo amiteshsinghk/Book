@@ -1,5 +1,8 @@
 package org.amitesh.book.di
 
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import org.amitesh.book.books.data.database.DatabaseFactory
+import org.amitesh.book.books.data.database.FavouriteBookDb
 import org.amitesh.book.books.data.network.KtorRemoteBookDataSource
 import org.amitesh.book.books.data.network.RemoteBookDataSource
 import org.amitesh.book.books.data.repository.DefaultBookRepository
@@ -22,6 +25,13 @@ val sharedModule = module {
     }
     singleOf(::KtorRemoteBookDataSource).bind<RemoteBookDataSource>()
     singleOf(::DefaultBookRepository).bind<BookRepository>()
+
+    single {
+        get<DatabaseFactory>().create()
+            .setDriver(BundledSQLiteDriver())
+            .build()
+    }
+    single { get<FavouriteBookDb>().dao }
 
     viewModelOf(::BookListViewModel)
     viewModelOf(::SelectedViewModel)
