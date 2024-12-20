@@ -2,9 +2,9 @@ package org.amitesh.book.books.presentation.book_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
@@ -30,6 +30,7 @@ class BookListViewModel(
     val state = _state
         .onStart {
             if (cachedBookList.isEmpty()) observeSearchQuery()
+            observerFavouriteBooks()
         }
         .stateIn(
             viewModelScope,
@@ -39,6 +40,7 @@ class BookListViewModel(
 
     private var cachedBookList = emptyList<Book>()
     private var searchJob: Job? = null
+    private var favouriteJob: Job? = null
 
     fun onAction(action: BookListAction) {
         when (action) {
@@ -61,6 +63,21 @@ class BookListViewModel(
         }
     }
 
+    private fun observerFavouriteBooks() {
+        favouriteJob?.cancel()
+        favouriteJob = viewModelScope.launch {
+            bookRepository.getFavouriteBooks()
+                .onEach {bookList ->
+                    _state.update {
+                        it.copy(favouriteBooks = bookList
+                        )
+                    }
+                }
+                .launchIn(viewModelScope)
+        }
+    }
+
+    @OptIn(FlowPreview::class)
     private fun observeSearchQuery() {
         state
             .map { it.searchQuery }

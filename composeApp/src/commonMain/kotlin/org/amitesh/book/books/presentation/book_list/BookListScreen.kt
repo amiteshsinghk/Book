@@ -3,10 +3,8 @@ package org.amitesh.book.books.presentation.book_list
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.widthIn
@@ -199,12 +197,12 @@ fun BookListScreen(
                                         }
 
                                         state.searchResults.isEmpty() -> {
-                                        Text(
-                                            text = stringResource(Res.string.no_results),
-                                            textAlign = TextAlign.Center,
-                                            style = MaterialTheme.typography.headlineSmall,
-                                            color = MaterialTheme.colorScheme.error
-                                        )
+                                            Text(
+                                                text = stringResource(Res.string.no_results),
+                                                textAlign = TextAlign.Center,
+                                                style = MaterialTheme.typography.headlineSmall,
+                                                color = MaterialTheme.colorScheme.error
+                                            )
                                         }
 
                                         else -> {
@@ -222,20 +220,10 @@ fun BookListScreen(
                             }
 
                             1 -> {
-                                println("BookList :: BookListScreen :: when ::  ${1}")
                                 if (state.isLoading) {
                                     CircularProgressIndicator()
                                 } else {
                                     when {
-                                        state.errorMessage != null -> {
-                                            Text(
-                                                text = state.errorMessage.asString(),
-                                                textAlign = TextAlign.Center,
-                                                style = MaterialTheme.typography.headlineSmall,
-                                                color = MaterialTheme.colorScheme.error
-                                            )
-                                        }
-
                                         state.favouriteBooks.isEmpty() -> {
                                             Text(
                                                 text = stringResource(Res.string.no_favourite_books),
