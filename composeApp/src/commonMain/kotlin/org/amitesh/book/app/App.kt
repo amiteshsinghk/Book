@@ -1,5 +1,7 @@
 package org.amitesh.book.app
 
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -33,7 +35,14 @@ fun App() {
             navigation<Routes.BookGraph>(
                 startDestination = Routes.BookList
             ){
-                composable<Routes.BookList> {
+                composable<Routes.BookList>(
+                    popEnterTransition = {
+                        slideInHorizontally()
+                    },
+                    exitTransition = {
+                        slideOutHorizontally()
+                    }
+                ) {
                     val viewModel = koinViewModel<BookListViewModel>()
                     val selectedBookViewModel =
                         it.sharedKoinViewModel<SelectedViewModel>(navController)
@@ -49,7 +58,14 @@ fun App() {
                     )
                 }
                 
-                composable<Routes.BookDetail> { entry ->
+                composable<Routes.BookDetail>(
+                    enterTransition = { slideInHorizontally { initialOffset->
+                        initialOffset
+                    } },
+                    exitTransition = { slideOutHorizontally{ initialOffset->
+                        initialOffset
+                    }  }
+                ) { entry ->
                     val selectedBookViewModel =
                         entry.sharedKoinViewModel<SelectedViewModel>(navController)
                     val viewModel = koinViewModel<BookDetailViewModel>()
