@@ -1,5 +1,6 @@
 package org.amitesh.book.books.data.database
 
+import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
@@ -12,6 +13,8 @@ import androidx.room.TypeConverters
 @TypeConverters(
     StringListTypeConverter::class
 )
+
+@ConstructedBy(BookDatabaseConstructor::class)
 abstract class FavouriteBookDb: RoomDatabase() {
     abstract val dao: FavouriteBookDao
 
