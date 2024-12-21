@@ -13,6 +13,13 @@ This is a Kotlin Multiplatform project targeting Android, iOS, Desktop.
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
 
+Depedency
+
+**Room** https://developer.android.com/kotlin/multiplatform/room
+**Ktor** https://ktor.io/docs/client-create-multiplatform-application.html#ios-view
+**Koin** https://insert-koin.io/docs/reference/koin-mp/kmp/
+**Coil** https://github.com/coil-kt/coil
+
 **Android**
 
 ![android-home](https://github.com/user-attachments/assets/b3dab58a-6c67-4c25-ac0d-ea8dac725ff9)
