@@ -4,7 +4,7 @@ import org.amitesh.book.books.domain.Book
 import org.amitesh.book.core.presentation.UiText
 
 data class BookListState(
-    val searchQuery: String = "Kotlin",
+    val searchQuery: String = "Sapiens",
     val searchResults: List<Book> = emptyList(),
     val favouriteBooks: List<Book> = emptyList(),
     val isLoading: Boolean = true,
